@@ -1,0 +1,13 @@
+p
+  span
+    | Title
+    br
+    = @task.title
+p
+  span
+    | Content
+    br
+    = @task.content
+
+p
+  = link_to 'Back to index', tasks_path
