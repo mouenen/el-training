@@ -22,10 +22,18 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    if @task.update(task_params)
+      redirect_to task_path
+    else
+      render edit_task_path
+    end
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, category_ids: [])
+    params.require(:task).permit(:title, :content, :sequence, category_ids: [])
   end
 
   def set_task
