@@ -19,13 +19,12 @@ gem 'sass-rails', '~> 5.0'
 gem 'rubocop' # コードスタイルを統一に書ける
 gem 'slim-rails' # HTMLを簡潔に書ける
 
-#--- devise
-gem 'devise', '~>4.4', '>=4.4.3'
-
 #--- email
 gem 'letter_opener'
 gem 'letter_opener_web'
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
