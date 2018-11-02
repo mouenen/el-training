@@ -1,21 +1,63 @@
 # el-training
 
-万葉で必須とされるRuby on Railsとその周辺技術の基礎を習得するための新入社員教育用カリキュラムです。
+Ruby on Railsとその周辺技術の基礎を習得するための研修カリキュラム。
 
-## ドキュメントの構成
+## データベース
 
-- [docs/el-training.md](/docs/el-training.md)
-  - 新入社員教育用カリキュラムのドキュメントです
-- [docs/topics.md](/docs/topics.md)
-  - カリキュラムに具体的には含まれていませんが、知ってほしいトピックをまとめたドキュメントです
+データベースはPostgreSQLです。
 
-## ライセンス
+- 開発用
+  - el_training_development
+- テスト用
+  - el_training_test
 
-このカリキュラムは[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)の下に提供されています。
+## テーブル
 
-[![クリエイティブ・コモンズ・ライセンス](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)  
+- users
+  - column
+    t.string "name", limit: 20, default: "", null: false
+    t.boolean "admin", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.string "activation_digest"
+    t.boolean "activated", default: false, null: false
+    t.datetime "actived_at"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
 
-## Language Supports
+- tasks
+  - column
+    t.datetime "created_at", null: false
+    t.datetime "finished_at", null: false
+    t.integer "sequence", default: 0, null: false
+    t.integer "status", default: -1, null: false
+    t.string "title", limit: 30, default: "", null: false
+    t.text "content", default: "", null: false
+    t.bigint "user_id", null: false
+  - index
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+    t.index ["user_id"], name: "index_tasks_uniqueness", unique: true
+  - foreign key
+    "fk_rails_4d2a9e4d7e" FOREIGN KEY (user_id) REFERENCES users(id)
 
-- 繁体字(zh_TW)
-  - https://github.com/5xruby/5xtraining （@jodeci 様ありがとうございます！）
+- categories
+  - column
+    t.string "name"
+    t.string "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
+- category_tasks
+  - column
+    t.bigint "category_id", null: false
+    t.bigint "task_id", null: false
+  - index
+    t.index ["category_id"], name: "index_category_tasks_on_category_id"
+    t.index ["task_id"], name: "index_category_tasks_on_task_id"
+  - foreign key
+    "fk_rails_455941be2e" FOREIGN KEY (category_id) REFERENCES categories(id)
+    "fk_rails_9efd72a0c7" FOREIGN KEY (task_id) REFERENCES tasks(id)
+
