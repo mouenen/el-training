@@ -5,10 +5,6 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  def show
-    @page_title = @task.title
-  end
-
   def new
     @task = Task.new
   end
