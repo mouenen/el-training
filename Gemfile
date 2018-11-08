@@ -16,7 +16,6 @@ gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 
 #--- view
-gem 'rubocop' # コードスタイルを統一に書ける
 gem 'slim-rails' # HTMLを簡潔に書ける
 
 #--- email
@@ -36,6 +35,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'rubocop', require: false
 end
 
 group :development do
