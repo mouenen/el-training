@@ -22,7 +22,7 @@ Ruby on Railsとその周辺技術の基礎を習得するための研修カリ�
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
     t.string "password_digest", default: "", null: false
-    t.datetime "remember_created_at"
+    t.datetime "remember_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false, null: false
     t.datetime "actived_at"
