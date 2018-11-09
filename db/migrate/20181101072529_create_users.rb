@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :email, null: false, default: ''
       t.string :password_digest, null: false, default: ''
-      t.datetime :remember_created_at
+      t.datetime :remember_digest
 
       # アカウントをアクティブにする
       t.string :activation_digest
