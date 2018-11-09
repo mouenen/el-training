@@ -1,6 +1,9 @@
 header class='navbar navbar-fixed-top navbar-inverse'
   div class='container'
-    p id='logo' Tasks
+    - if logged_in?
+      = link_to  "Tasks", tasks_path, id: 'logo'
+    -else
+      p id='logo' Tasks
     nav 
       ul class='nav navbar-nav navbar-right'
         - if logged_in?
