@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+
   def new
   end
 
@@ -13,5 +13,10 @@ class SessionsController < ApplicationController
       flash[:alert] = 'Invalid email/password combination.'
       render 'new'
     end
+  end
+
+  def destroy
+    log_out
+    redirect_to root_path
   end
 end
