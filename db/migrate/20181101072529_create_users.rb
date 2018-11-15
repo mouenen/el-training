@@ -5,9 +5,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :admin, null: false, default: false
       t.timestamps
 
-      t.string :email,              null: false, default: ''
-      t.string :encrypted_password, null: false, default: ''
-      t.datetime :remember_created_at
+      t.string :email, null: false, default: ''
+      t.string :password_digest, null: false, default: ''
+      t.datetime :remember_digest
 
       # アカウントをアクティブにする
       t.string :activation_digest
