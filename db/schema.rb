@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2018_11_01_075739) do
     t.string "title", limit: 30, default: "", null: false
     t.text "content", default: "", null: false
     t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_tasks"
     t.index ["user_id"], name: "index_tasks_on_user_id"
-    t.index ["user_id"], name: "index_tasks_uniqueness", unique: true
   end
 
   create_table "users", force: :cascade do |t|

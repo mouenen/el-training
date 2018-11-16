@@ -10,7 +10,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
 
       t.references :user, foreign_key: true, null: false
 
-      t.index %i[user_id], name: 'index_tasks_uniqueness', unique: true
+      t.index %i[user_id], name: 'index_tasks', unique: false
     end
   end
 end
