@@ -17,8 +17,18 @@ textarea {
   resize: vertical;
 }
 
+.table > thead > tr,
+.table > tbody > tr {
+  > th { text-align: center; }
+  > td { text-align: center; }
+}
+
 .center {
   text-align: center;
+}
+
+.btn-back {
+  float: right;
 }
 
 #logo {
