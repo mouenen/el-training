@@ -9,13 +9,13 @@
       li = msg
 
 = f.label :title, "Title"
-= f.text_field :title, class: 'form-control'
+= f.text_field :title, class: 'form-control', placeholder: 'minimum: 3, maximum: 30'
 br
 = f.label :content, "Content"
 = f.text_area :content, class: 'form-control'
 br
 = f.label :sequence, "Sequence"
-= f.text_field :sequence, class: 'form-control'
+= f.text_field :sequence, class: 'form-control', placeholder: '0 < integer <= 5'
 br
 = f.label :finished_at, 'Finish time'
 .form-group
