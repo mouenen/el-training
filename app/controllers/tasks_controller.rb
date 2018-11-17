@@ -13,20 +13,20 @@ class TasksController < ApplicationController
     @task = current_user.tasks.new(task_params)
     if @task.save
       flash[:notice] = 'Task was successfully created.'
-      redirect_to tasks_path
+      render :show
     else
       flash[:alert] = 'Task was unsuccessfully created.'
-      render new_task_path
+      render :new
     end
   end
 
   def update
     if @task.update(task_params)
       flash[:notice] = 'Task was successfully updated.'
-      redirect_to task_path
+      render :show
     else
       flash[:alert] = 'Task was unsuccessfully updated.'
-      render edit_task_path
+      render :edit
     end
   end
 
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :finished_at, category_ids: [])
+    params.require(:task).permit(:title, :content, :sequence, :finished_at, category_ids: [])
   end
 
   def set_task

@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_075739) do
   create_table "tasks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "finished_at", null: false
-    t.integer "sequence", default: 0, null: false
+    t.integer "sequence", null: false
     t.integer "status", default: -1, null: false
     t.string "title", limit: 30, default: "", null: false
     t.text "content", default: "", null: false
