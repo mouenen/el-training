@@ -1,0 +1,20 @@
+- content_for :title, @user.name
+h1.center
+  = @user.name
+.row
+  .col-md-4.col-md-offset-4
+    table.table.table-hover
+      tbody
+        tr
+          td.column_name Name
+          td.column_content = @user.name
+        tr
+          td.column_name Email
+          td.column_content = @user.email
+        tr
+          td.column_name Is Admin?
+          td.column_content = @user.admin
+
+    = link_to 'Back to users index', users_path, class: 'btn btn-primary btn-back'
+
+            
