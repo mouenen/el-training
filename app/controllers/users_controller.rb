@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update]
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :logged_in_user, only: %i[index edit update destroy]
+  before_action :set_user, only: %i[show edit update]
+  before_action :admin_user, only: %i[destroy]
 
   def index
     @users = User.all
@@ -31,6 +32,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if User.find(params[:id]).destroy
+      flash[:notice] = 'User was successfully deleted.'
+      redirect_to users_path
+    else
+      flash[:alert] = 'User was unsuccessfully deleted.'
+    end
+  end
+
   private
 
   def user_params
@@ -48,5 +58,9 @@ class UsersController < ApplicationController
       flash[:alert] = 'Please log in'
       redirect_to login_path
     end
+  end
+
+  def admin_user
+    redirect_to users_path unless current_user.admin
   end
 end
