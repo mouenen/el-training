@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_075739) do
     t.datetime "remember_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false, null: false
-    t.datetime "actived_at"
+    t.datetime "activated_at"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
   end

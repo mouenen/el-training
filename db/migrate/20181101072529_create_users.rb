@@ -12,7 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       # アカウントをアクティブにする
       t.string :activation_digest
       t.boolean :activated, null: false, default: false
-      t.datetime :actived_at
+      t.datetime :activated_at
       
       # パスワードをリセットする
       t.string   :reset_password_token
