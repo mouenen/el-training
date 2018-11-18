@@ -39,10 +39,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+    redirect_back_or users_path unless current_user?(@user)
   end
 
   def logged_in_user
     unless logged_in?
+      store_location
       flash[:alert] = 'Please log in'
       redirect_to login_path
     end
