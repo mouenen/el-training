@@ -20,6 +20,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(user_params)
+      flash[:notice] = 'User was successfully updated.'
+      render :show
+    else
+      flash[:alert] = 'User was unsuccessfully updated.'
+      render :edit
+    end
+  end
+
   private
 
   def user_params
