@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-    redirect_back_or users_path unless current_user?(@user)
+    redirect_back_or users_path unless @user == current_user
   end
 
   def logged_in_user
