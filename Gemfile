@@ -20,10 +20,6 @@ gem 'bootstrap3-datetimepicker-rails'
 #--- view
 gem 'slim-rails' # HTMLを簡潔に書ける
 
-#--- email
-gem 'letter_opener'
-gem 'letter_opener_web'
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use Puma as the app server
@@ -34,6 +30,9 @@ gem 'turbolinks', '~> 5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  #--- email
+  gem 'letter_opener'
+  gem 'letter_opener_web'
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
