@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[index edit update destroy]
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[edit update]
   before_action :admin_user, only: %i[destroy]
 
   def index
@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to login_path and return unless logged_in_user
+    @user = User.find(params[:id])
+    redirect_to login_path and return unless @user.activated?
   end
 
   def new
