@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   before_action :admin_user, only: %i[destroy]
 
   def index
-    @users = User.all
+    @users = User.where(activated: true)
+  end
+
+  def show
+    redirect_to login_path and return unless logged_in_user
   end
 
   def new
@@ -14,6 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.send_activation_email
       flash[:notice] = 'User was successfully created.'
       redirect_to login_path
     else
