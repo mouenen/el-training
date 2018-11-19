@@ -11,15 +11,18 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
-  # 指定されたハシの要約を返す
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
-  # ランダム
-  def User.new_token
-    SecureRandom.urlsafe_base64
+
+  class << self
+    # 指定されたハシの要約を返す
+    def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                    BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+    end
+    # ランダム
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
   end
 
   def remember
