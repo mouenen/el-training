@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   resources :users, :tasks, :categories
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: %i[new create edit update]
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   root 'sessions#new'
 end
