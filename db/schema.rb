@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2018_11_01_075739) do
     t.string "activation_digest"
     t.boolean "activated", default: false, null: false
     t.datetime "activated_at"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   add_foreign_key "category_tasks", "categories"

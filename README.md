@@ -26,8 +26,8 @@ Ruby on Railsとその周辺技術の基礎を習得するための研修カリ�
     t.string "activation_digest"
     t.boolean "activated", default: false, null: false
     t.datetime "activated_at"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     ```
 
 - tasks
