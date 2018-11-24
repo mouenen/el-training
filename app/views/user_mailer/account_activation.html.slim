@@ -1,8 +1,7 @@
-h1 Tasks
+h1 = t('views.title.task')
 p 
-  | Hi 
+  | おはようございます 
   = @user.name
-p 
-  | Welcome to the Tasks! Click on the link below to activate your account:
-= link_to  'Activate', edit_account_activation_url(@user.activation_token,
+p タスクへようこそ！下記のリンクをクリックしてアカウントをアクティブにします。
+= link_to 'アクティブ', edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) 

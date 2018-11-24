@@ -12,30 +12,30 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
-      flash[:notice] = 'Task was successfully created.'
+      flash[:notice] = t('created', temp: @task.title)
       render :show
     else
-      flash[:alert] = 'Task was unsuccessfully created.'
+      flash[:alert] = t('not_created', temp: @task.title)
       render :new
     end
   end
 
   def update
     if @task.update(task_params)
-      flash[:notice] = 'Task was successfully updated.'
+      flash[:notice] = t('updated', temp: @task.title)
       render :show
     else
-      flash[:alert] = 'Task was unsuccessfully updated.'
+      flash[:alert] = t('not_updated', temp: @task.title)
       render :edit
     end
   end
 
   def destroy
     if @task.destroy
-      flash[:notice] = 'Task was successfully deleted.'
+      flash[:notice] = t('destroyed', temp: @task.title)
       redirect_to tasks_path
     else
-      flash[:alert] = 'Task was unsuccessfully deleted.'
+      flash[:alert] = t('not_destroyed', temp: @task.title)
     end
   end
 

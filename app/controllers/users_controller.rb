@@ -20,30 +20,30 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:notice] = 'User was successfully created.'
+      flash[:notice] = t('created', temp: @user.name)
       redirect_to login_path
     else
-      flash[:alert] = 'User was unsuccessfully created.'
+      flash[:alert] = t('not_created', temp: @user.name)
       render new_user_path
     end
   end
 
   def update
     if @user.update(user_params)
-      flash[:notice] = 'User was successfully updated.'
+      flash[:notice] = t('updated', temp: @user.name)
       render :show
     else
-      flash[:alert] = 'User was unsuccessfully updated.'
+      flash[:alert] = t('not_updated', temp: @user.name)
       render :edit
     end
   end
 
   def destroy
     if User.find(params[:id]).destroy
-      flash[:notice] = 'User was successfully deleted.'
+      flash[:notice] = t('destroyed', temp: @user.name)
       redirect_to users_path
     else
-      flash[:alert] = 'User was unsuccessfully deleted.'
+      flash[:alert] = t('not_destroyed', temp: @user.name)
     end
   end
 
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:alert] = 'Please log in'
+      flash[:alert] = t(:log_in)
       redirect_to login_path
     end
   end

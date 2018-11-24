@@ -1,17 +1,17 @@
-- content_for :title, 'Edit user'
+- content_for :title, t('views.default.edit', temp: 'ユーザ')
 h1.center
   = @user.name
 .row
   .col-md-4.col-md-offset-4
     = form_for( @user) do |f|
-      = f.label :name
+      = f.label :name, t('views.form.label.name')
       = f.text_field :name, class: 'form-control' 
       br
-      = f.label :password
+      = f.label :password, t('views.form.label.password')
       = f.password_field :password, class: 'form-control' 
       br
-      = f.label :password_confirmation, 'Confirmation'
+      = f.label :password_confirmation, t('views.form.label.password_confirmation')
       = f.password_field :password_confirmation, class: 'form-control' 
       br
-      = f.submit 'Update', class: 'btn btn-primary'
-      = link_to 'Back to users index', users_path, class: 'btn btn-primary btn-back'
+      = f.submit t('views.form.submit.update'), class: 'btn btn-primary'
+      = link_to t('views.form.link.back_index', temp: 'ユーザ'), users_path, class: 'btn btn-primary btn-back'

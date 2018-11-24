@@ -8,16 +8,16 @@
     - @task.errors.full_messages.each do |msg|
       li = msg
 
-= f.label :title, "Title"
-= f.text_field :title, class: 'form-control', placeholder: 'minimum: 3, maximum: 30'
+= f.label :title, t('views.form.label.title')
+= f.text_field :title, class: 'form-control', placeholder: t('views.form.label.title_placeholder')
 br
-= f.label :content, "Content"
+= f.label :content, t('views.form.label.content')
 = f.text_area :content, class: 'form-control'
 br
-= f.label :sequence, "Sequence"
-= f.text_field :sequence, class: 'form-control', placeholder: '0 < integer <= 5'
+= f.label :sequence, t('views.form.label.sequence')
+= f.text_field :sequence, class: 'form-control', placeholder: t('views.form.label.sequence_placeholder')
 br
-= f.label :finished_at, 'Finish time'
+= f.label :finished_at, t('views.form.label.finished_time')
 .form-group
   .input-group.date id='datetimepicker'
     = f.text_field :finished_at, class: 'form-control'

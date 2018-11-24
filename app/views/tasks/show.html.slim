@@ -1,29 +1,28 @@
 - content_for :title, @task.title
-h1.center
-  = @task.title
+h1.center = @task.title
 .row
   .col-md-4.col-md-offset-4
     table.table.table-hover
       tbody
         tr
-          td.column_name Title
+          td.column_name = t('views.form.label.title')
           td.column_content = @task.title
         tr
-          td.column_name Content
+          td.column_name = t('views.form.label.content')
           td.panel = @task.content
         tr
-          td.column_name Created at
+          td.column_name = t('views.form.label.created_at')
           td.column_content = @task.created_at
         tr
-          td.column_name Finished at
+          td.column_name = t('views.form.label.finished_time')
           td.column_content = @task.finished_at
         tr
-          td.column_name Sequence
+          td.column_name = t('views.form.label.sequence')
           td.column_content = @task.sequence
         tr
-          td.column_name Status
+          td.column_name = t('views.form.label.status')
           td.column_content = @task.status
 
-    = link_to 'Back to tasks index', tasks_path, class: 'btn btn-primary btn-back'
+    = link_to t('views.form.link.back_index', temp: 'タスク'), tasks_path, class: 'btn btn-primary btn-back'
 
             

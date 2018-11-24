@@ -11,10 +11,10 @@ class PasswordResetsController < ApplicationController
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
-      flash[:notice] = 'Email sent with password reset instructions'
+      flash[:notice] = t(:sent_reset_password_email)
       redirect_to login_path
     else
-      flash.now[:alert] = 'Email address not found'
+      flash.now[:alert] = t(:not_found_email_address)
       render 'new'
     end
   end
@@ -27,7 +27,7 @@ class PasswordResetsController < ApplicationController
       @user.errors.add(:password, :blank)
       render 'edit'
     elsif @user.update_attributes(user_params)
-      flash[:notice] = 'Password has been reset.'
+      flash[:notice] = t(:reset_password)
       redirect_to login_path
     else
       render 'edit'
@@ -52,7 +52,7 @@ class PasswordResetsController < ApplicationController
 
   def check_expiration
     if @user.password_reset_expired?
-      flash[:alert] = 'Password reset has expired.'
+      flash[:alert] = t(:reset_password_expired)
       redirect_to new_password_reset_path
     end
   end
