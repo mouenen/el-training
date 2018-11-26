@@ -1,23 +1,23 @@
-header class='navbar navbar-fixed-top navbar-inverse'
-  div class='container'
+header.navbar.navbar-fixed-top.navbar-inverse
+  .container
     - if logged_in?
-      = link_to  "Tasks", tasks_path, id: 'logo'
+      = link_to t('views.header.task'), tasks_path, id: 'logo'
     -else
-      p id='logo' Tasks
+      p id='logo'
+        = t('views.header.task')
     nav 
-      ul class='nav navbar-nav navbar-right'
+      ul.nav.navbar-nav.navbar-right
         - if logged_in?
-          li = link_to  "Tasks", tasks_path
-          li class = 'dropdown'
-            a herf='#' class='dropdown-toggle' data-toggle='dropdown'
-              | Account 
-              b class='caret'
-            ul class='dropdown-menu'
-              li = link_to  "Profile", current_user
-              li = link_to  "Setting", '#'
-              li class='divider'
-              li = link_to  "Log out", logout_path, method: 'delete'
+          li = link_to t('views.default.index', temp: 'タスク'), tasks_path
+          li = link_to t('views.default.index', temp: 'ユーザ'), users_path
+          li.dropdown
+            a.dropdown-toggle herf='#' data-toggle='dropdown'
+              | アカウント 
+              b.caret
+            ul.dropdown-menu
+              li = link_to t('views.header.profile'), current_user
+              li = link_to t('views.header.setting'), edit_user_path(current_user)
+              li.divider
+              li = link_to t('views.header.logout'), logout_path, method: 'delete', data: { confirm: 'ログアウトしますか?' }
         - else
-          li = link_to  "Log in", login_path 
-
-
+          li = link_to t('views.header.login'), login_path

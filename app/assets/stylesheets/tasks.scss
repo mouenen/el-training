@@ -1,0 +1,28 @@
+@import 'bootstrap-datetimepicker';
+
+.panel {
+  padding-top: 4px !important;
+  text-align: left !important;
+  resize: vertical;
+  overflow: auto;
+  font-size: 16px;
+  word-wrap: break-word;
+  word-break: break-all;
+  border: none !important;
+}
+
+.column_name {
+  height: 22px;
+  width: 100px;
+  padding: 2px !important;
+  font-size: 18px;
+  font-weight: 600;
+  border: none !important;
+}
+
+.column_content {
+  height: 22px;
+  padding: 4px !important;
+  font-size: 16px;
+  border: none !important;
+}

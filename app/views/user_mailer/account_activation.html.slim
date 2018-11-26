@@ -1,0 +1,7 @@
+h1 = t('views.title.task')
+p 
+  | おはようございます 
+  = @user.name
+p タスクへようこそ！下記のリンクをクリックしてアカウントをアクティブにします。
+= link_to 'アクティブ', edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) 

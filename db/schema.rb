@@ -32,13 +32,13 @@ ActiveRecord::Schema.define(version: 2018_11_01_075739) do
   create_table "tasks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "finished_at", null: false
-    t.integer "sequence", default: 0, null: false
+    t.integer "sequence", null: false
     t.integer "status", default: -1, null: false
     t.string "title", limit: 30, default: "", null: false
     t.text "content", default: "", null: false
     t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_tasks"
     t.index ["user_id"], name: "index_tasks_on_user_id"
-    t.index ["user_id"], name: "index_tasks_uniqueness", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 2018_11_01_075739) do
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
     t.string "password_digest", default: "", null: false
-    t.datetime "remember_digest"
+    t.string "remember_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false, null: false
-    t.datetime "actived_at"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   add_foreign_key "category_tasks", "categories"

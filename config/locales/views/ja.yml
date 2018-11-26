@@ -1,0 +1,58 @@
+ja:
+  views:
+    default:
+      index: "%{temp}一覧"
+      show: "%{temp}詳細"
+      new: "%{temp}新規"
+      add: "%{temp}追加"
+      create: "%{temp}作成"
+      edit: "%{temp}編集"
+      update: "%{temp}更新"
+      destroy: "%{temp}削除"
+      save: "%{temp}保存"
+    header:
+      task: タスク
+      profile: 個人情報
+      setting: 個人情報設定
+      logout:  ログアウト
+      login: ログイン
+    title:
+      login: ログイン
+      sign_up: サインアップ
+      reset_password: パスワードをリセットする
+      forget_password: パスワードを忘れました?
+      task: タスク
+    form:
+      label:
+        name: 名前
+        email: メール
+        admin?: 管理者ですか?
+        password: パスワード
+        password_confirmation: パスワード確認
+        forget_password: (パスワードを忘れました?)
+        remember_me: アカウントを覚える
+        title: タイトル
+        title_placeholder: タイトルの字数は3字から30字までです
+        content: 内容
+        sequence: 優先順位
+        sequence_placeholder: 1から5まで、大数優先
+        created_time: 作成時間
+        finished_time: 完成時間
+        status: 状態
+      submit:
+        login: ログイン
+        update_password: パスワード更新
+        submit: 提出
+        update: 更新
+        create: 作成
+      link:
+        sign_up: 申し込んでください
+        back_index: '%{temp}一覧画面を戻る'
+        show: 詳細
+        destroy: 削除
+        edit: 編集
+        sure?: 確かですか？
+
+      
+      
+

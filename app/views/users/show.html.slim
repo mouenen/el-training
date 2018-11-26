@@ -1,0 +1,19 @@
+- content_for :title, @user.name
+h1.center = @user.name
+.row
+  .col-md-4.col-md-offset-4
+    table.table.table-hover
+      tbody
+        tr
+          td.column_name = t('views.form.label.name')
+          td.column_content = @user.name
+        tr
+          td.column_name = t('views.form.label.email')
+          td.column_content = @user.email
+        tr
+          td.column_name = t('views.form.label.admin?')
+          td.column_content = @user.admin
+
+    = link_to t('views.form.link.back_index', temp: 'ユーザ'), users_path, class: 'btn btn-primary btn-back'
+
+            

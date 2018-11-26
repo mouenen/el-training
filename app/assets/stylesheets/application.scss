@@ -17,8 +17,18 @@ textarea {
   resize: vertical;
 }
 
+.table > thead > tr,
+.table > tbody > tr {
+  > th { text-align: center; }
+  > td { text-align: center; }
+}
+
 .center {
   text-align: center;
+}
+
+.btn-back {
+  float: right;
 }
 
 #logo {
@@ -34,4 +44,14 @@ textarea {
     color: rgb(202, 187, 99);
     text-decoration: none;
   }
+}
+
+.notice {
+  margin: 10px, 5px; 
+  color: green;
+}
+
+.alert {
+  margin: 10px, 5px; 
+  color: red;
 }

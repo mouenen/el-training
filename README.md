@@ -22,12 +22,12 @@ Ruby on Railsとその周辺技術の基礎を習得するための研修カリ�
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
     t.string "password_digest", default: "", null: false
-    t.datetime "remember_digest"
+    t.string "remember_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false, null: false
-    t.datetime "actived_at"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     ```
 
 - tasks
@@ -35,7 +35,7 @@ Ruby on Railsとその周辺技術の基礎を習得するための研修カリ�
     ```
     t.datetime "created_at", null: false
     t.datetime "finished_at", null: false
-    t.integer "sequence", default: 0, null: false
+    t.integer "sequence", null: false
     t.integer "status", default: -1, null: false
     t.string "title", limit: 30, default: "", null: false
     t.text "content", default: "", null: false
@@ -43,8 +43,8 @@ Ruby on Railsとその周辺技術の基礎を習得するための研修カリ�
     ```
   - index
     ```
+    t.index ["user_id"], name: "index_tasks"
     t.index ["user_id"], name: "index_tasks_on_user_id"
-    t.index ["user_id"], name: "index_tasks_uniqueness", unique: true
     ```
   - foreign key
     ```

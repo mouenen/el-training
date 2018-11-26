@@ -1,4 +1,8 @@
-= form_for @task do |f|
-  = render partial: 'form', locals: { f: f }
-  = f.submit "Create"
-  = link_to 'Back to index', tasks_path
+- content_for :title, t('views.default.create', temp: 'タスク')
+h1.center = t('views.default.create', temp: 'タスク')
+.row
+  .col-md-6.col-md-offset-3
+    = form_for @task do |f|
+      = render partial: 'form', locals: { f: f }
+      = f.submit t('views.form.submit.create'), class: 'btn btn-primary'
+      = link_to t('views.form.link.back_index', temp: 'タスク'), tasks_path, class: 'btn btn-primary btn-back'

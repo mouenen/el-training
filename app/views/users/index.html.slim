@@ -1,0 +1,22 @@
+- content_for :title, t('views.default.index', temp: 'ユーザ')
+h1.center = t('views.default.index', temp: 'ユーザ')
+.row
+  .col-md-8.col-md-offset-2
+    table.table.table-hover.table-responsive
+      thead
+        tr
+          th = t('views.form.label.name')
+          th = t('views.form.label.email')
+          th = t('views.form.label.admin?')
+          th colspan="3"
+      tbody
+        - @users.each do |user|
+          tr
+            td = user.name
+            td = user.email
+            td = user.admin
+            td = link_to t('views.form.link.show'), user
+            td = link_to t('views.form.link.edit'),  edit_user_path(user)
+            td = link_to t('views.form.link.destroy'), user, method: :delete, data: { confirm: t('views.form.link.sure?') }
+
+    = link_to t('views.default.index', temp: 'タスク'), tasks_path, class: 'btn btn-primary'
