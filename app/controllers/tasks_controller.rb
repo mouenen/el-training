@@ -5,6 +5,21 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def sort
+    sort = case params['sort']
+      when 'title' then 'title ASC'
+      when "title_reverse" then "title DESC"
+      when "sequence" then "sequence ASC"
+      when "sequence_reverse" then "sequence DESC"
+      when "finished_at" then "finished_at ASC"
+      when "finished_at_reverse" then "finished_at DESC"
+      when 'status' then 'status ASC'
+      when "status_reverse" then "status DESC"
+    end
+    @tasks = Task.order(sort)
+    render :index, locals: { tasks: @tasks }
+  end
+
   def new
     @task = Task.new
   end

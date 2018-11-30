@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#new'
+  get 'tasks/:sort', to: 'tasks#sort'
   resources :users, :tasks, :categories
   resources :account_activations, only: [:edit]
   resources :password_resets, only: %i[new create edit update]

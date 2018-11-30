@@ -6,7 +6,9 @@ h1.center = t('views.default.index', temp: 'タスク')
       thead
         tr
           th = t('views.form.label.title')
-          th = t('views.form.label.sequence')
+          th 
+            = t('views.form.label.sequence')
+            = sort_link_helper 'sequence'
           th = t('views.form.label.finished_time')
           th = t('views.form.label.status')
           th colspan="3"
