@@ -5,5 +5,9 @@ h1.center
   .col-md-6.col-md-offset-3
     = form_for @task do |f| 
       = render partial: 'form', locals: { f: f } 
+      = f.label :status, t('views.form.label.status')
+      = f.select :status, Task::STATUS, {include_blank: t('views.form.label.status_placeholder')}
+      br
+      br
       = f.submit t('views.form.submit.update'), class: 'btn btn-primary'
       = link_to t('views.form.link.back_index', temp: 'タスク'), tasks_path, class: 'btn btn-primary btn-back'

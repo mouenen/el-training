@@ -26,3 +26,13 @@
   font-size: 16px;
   border: none !important;
 }
+
+#task_sequence, #task_status {
+  margin-left: 20px;
+  width: 30%;
+  height: 34px;
+  padding: 3px 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

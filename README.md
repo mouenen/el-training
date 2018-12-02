@@ -36,7 +36,7 @@ Ruby on Railsとその周辺技術の基礎を習得するための研修カリ�
     t.datetime "created_at", null: false
     t.datetime "finished_at", null: false
     t.integer "sequence", null: false
-    t.integer "status", default: -1, null: false
+    t.integer "status", default: 0, null: false
     t.string "title", limit: 30, default: "", null: false
     t.text "content", default: "", null: false
     t.bigint "user_id", null: false
