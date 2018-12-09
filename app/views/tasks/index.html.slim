@@ -6,7 +6,7 @@ h1.center = t('views.default.index', temp: 'タスク')
       thead
         tr
           th = sort_link_helper t('views.form.label.title'), 'title'
-          th = sort_link_helper t('views.form.label.sequence'), 'sequence'
+          th = sort_link_helper t('views.form.label.priority'), 'priority'
           th = sort_link_helper t('views.form.label.finished_time'), 'finished_at'
           th = sort_link_helper t('views.form.label.status'), 'status'
           th colspan="3"
@@ -14,7 +14,7 @@ h1.center = t('views.default.index', temp: 'タスク')
         - @tasks.each do |task|
           tr
             td = task.title
-            td = task.sequence
+            td = task.priority
             td = task.finished_at
             td = task.status
             td = link_to t('views.form.link.show'), task

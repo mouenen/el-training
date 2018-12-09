@@ -34,8 +34,8 @@ ja:
         title: タイトル
         title_placeholder: タイトルの字数は3字から30字までです
         content: 内容
-        sequence: 優先順位
-        sequence_placeholder: 優先順位(高中低)
+        priority: 優先順位
+        priority_placeholder: 優先順位(高中低)
         created_time: 作成時間
         finished_time: 完成時間
         status: 状態

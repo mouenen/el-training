@@ -9,8 +9,8 @@ class TasksController < ApplicationController
     sort = case params['sort']
       when 'title' then 'title ASC'
       when "title_reverse" then "title DESC"
-      when "sequence" then "sequence ASC"
-      when "sequence_reverse" then "sequence DESC"
+      when "priority" then "priority ASC"
+      when "priority_reverse" then "priority DESC"
       when "finished_at" then "finished_at ASC"
       when "finished_at_reverse" then "finished_at DESC"
       when 'status' then 'status ASC'
@@ -57,7 +57,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :sequence, :finished_at, :status, category_ids: [])
+    params.require(:task).permit(:title, :content, :priority, :finished_at, :status, category_ids: [])
   end
 
   def set_task

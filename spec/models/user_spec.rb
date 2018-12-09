@@ -77,9 +77,9 @@ RSpec.describe User, type: :model do
     user = FactoryBot.create(:user)
     user.valid?
     task1 = user.tasks.create!(title: 'Test task1', content: 'My first test task.',
-                               sequence: 1, finished_at: '2018-12-12 15:00:00')
+                               priority: 1, finished_at: '2018-12-12 15:00:00')
     task2 = user.tasks.create!(title: 'Test task2', content: 'My second test task.',
-                               sequence: 2, finished_at: '2018-12-12 15:00:00')
+                               priority: 2, finished_at: '2018-12-12 15:00:00')
     expect(user.tasks).to eq([task1, task2])
     user.destroy
     expect(user.tasks.count).to eq 0

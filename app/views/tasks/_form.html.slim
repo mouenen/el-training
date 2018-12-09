@@ -14,8 +14,8 @@ br
 = f.label :content, t('views.form.label.content')
 = f.text_area :content, class: 'form-control'
 br
-= f.label :sequence, t('views.form.label.sequence')
-= f.select :sequence, Task::SEQUENCE, {include_blank: t('views.form.label.sequence_placeholder')}
+= f.label :priority, t('views.form.label.priority')
+= f.select :priority, Task::PRIORITY, {include_blank: t('views.form.label.priority_placeholder')}
 br
 = f.label :finished_at, t('views.form.label.finished_time')
 .form-group
