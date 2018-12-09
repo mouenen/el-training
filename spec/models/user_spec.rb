@@ -14,6 +14,7 @@ RSpec.describe User, type: :model do
   it 'name should not be too long' do
     user = FactoryBot.build(:user, name: 'a' * 21)
     user.valid?
+    expect(user.errors[:name]).to be_truthy
   end
 
   it 'is invalid without an email address' do
