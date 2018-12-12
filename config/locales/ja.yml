@@ -10,7 +10,7 @@ ja:
   invalid_email_password: 無効なメール/パスワードの組み合わせ。
   not_activated: アカウントはアクティブしません。アクティベーションリンクのメールをチェックしてください。
 
-  sent_reset_password_email: パスワードをリセットするメールが送信しません。
+  sent_reset_password_email: パスワードをリセットするメールが送信しました。
   not_found_email_address: メールアドレスが見つかりません。
   reset_password: パスワードがリセットされました。
   reset_password_expired: パスワードリセットが終了しました。

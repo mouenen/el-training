@@ -29,6 +29,7 @@ ja:
         admin?: 管理者ですか?
         password: パスワード
         password_confirmation: パスワード確認
+        password_placeholder: 6文字以上を設定してください
         forget_password: (パスワードを忘れました?)
         remember_me: アカウントを覚える
         title: タイトル

@@ -5,9 +5,11 @@ h1.center = t('views.title.reset_password')
     = form_for(@user , url: password_reset_path(params[:id])) do |f| 
       = hidden_field_tag :email, @user.email
       = f.label :password, t('views.form.label.password')
-      = f.password_field :password, class: 'form-control'
+      = f.password_field :password, class: 'form-control', autofocus: true,
+                         placeholder: t('views.form.label.password_placeholder')
       br
       = f.label :password_confirmation, t('views.form.label.password_confirmation')
-      = f.password_field :password_confirmation, class: 'form-control'
+      = f.password_field :password_confirmation, class: 'form-control',
+                         placeholder: t('views.form.label.password_placeholder')
       br
       = f.submit t('views.form.submit.update_password'), class: 'btn btn-primary'
