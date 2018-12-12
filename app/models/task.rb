@@ -10,4 +10,9 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3, maximum: 30 }
   VALID_DATETIME_REGEX = /\A[1-9]\d\d\d\-0?[1-9]|1[12]\-0?[1-9]|[12]\d|3[01] [01]?[0-9]|2[0-4]:[0-5]\d:[0-5]\d\z/
   validates :finished_at, presence: true, format: { with: VALID_DATETIME_REGEX }
+  validate :finished_at_later_than_created_at
+
+  def finished_at_later_than_created_at
+    errors.add(:base, 'Finish time must later then create time') if Time.zone.now > finished_at
+  end
 end
