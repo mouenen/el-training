@@ -4,7 +4,7 @@ ja:
   updated: "%{temp}を更新しました。"
   not_updated: "%{temp}を更新しません。"
   destroyed: "%{temp}を削除しました。"
-  not_destroyed: "%{temp}を更新しません。"
+  not_destroyed: "%{temp}を削除できません。"
 
   log_in: ログインしてください
   invalid_email_password: 無効なメール/パスワードの組み合わせ。

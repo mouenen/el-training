@@ -39,11 +39,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if User.find(params[:id]).destroy
+    if current_user.admin
+      flash[:alert] = t('not_destroyed', temp: current_user.name)
+    else
+      User.find(params[:id]).destroy
       flash[:notice] = t('destroyed', temp: 'ユーザ')
       redirect_to users_path
-    else
-      flash[:alert] = t('not_destroyed', temp: @user.name)
     end
   end
 
