@@ -11,14 +11,18 @@ gem 'pg'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5' # JSONレスポンスを効率的に書ける
 gem 'jquery-rails'
+gem 'vuejs-rails'
 gem 'uglifier', '>= 1.3.0' # JavaScriptの圧縮
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'bootstrap-kaminari-views'
 
 #--- view
 gem 'slim-rails' # HTMLを簡潔に書ける
+gem 'ransack'
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

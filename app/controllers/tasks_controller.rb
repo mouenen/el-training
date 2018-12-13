@@ -2,19 +2,20 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @tasks = Task.all
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result.page(params[:page]).per(10)
   end
 
   def sort
     sort = case params['sort']
-      when 'title' then 'title ASC'
-      when "title_reverse" then "title DESC"
-      when "priority" then "priority ASC"
-      when "priority_reverse" then "priority DESC"
-      when "finished_at" then "finished_at ASC"
-      when "finished_at_reverse" then "finished_at DESC"
-      when 'status' then 'status ASC'
-      when "status_reverse" then "status DESC"
+           when 'title' then 'title ASC'
+           when 'title_reverse' then 'title DESC'
+           when 'priority' then 'priority ASC'
+           when 'priority_reverse' then 'priority DESC'
+           when 'finished_at' then 'finished_at ASC'
+           when 'finished_at_reverse' then 'finished_at DESC'
+           when 'status' then 'status ASC'
+           when 'status_reverse' then 'status DESC'
     end
     @tasks = Task.order(sort)
     render :index, locals: { tasks: @tasks }

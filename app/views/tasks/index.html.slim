@@ -2,6 +2,15 @@
 h1.center = t('views.default.index', temp: 'タスク')
 .row
   .col-md-8.col-md-offset-2
+    = search_form_for @q do |f|
+       table.col-md-offset-2
+        tbody
+          tr
+            td = f.label :title, t('views.form.label.title')
+            td = f.search_field :title_cont, class: 'form-control'
+            td = f.label :status, t('views.form.label.status')
+            td = f.search_field :status_eq, class: 'form-control'
+            td = f.submit class: "btn glyphicon glyphicon-search"
     table.table.table-hover.table-responsive
       thead
         tr
@@ -22,3 +31,4 @@ h1.center = t('views.default.index', temp: 'タスク')
             td = link_to t('views.form.link.destroy'), task, method: :delete, data: { confirm: t('views.form.link.sure?') }
 
     = link_to t('views.default.new', temp: 'タスク'), new_task_path, class: 'btn btn-primary'
+    = paginate @tasks, theme: 'twitter-bootstrap-3'
