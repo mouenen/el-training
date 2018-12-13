@@ -22,6 +22,11 @@ h1.center = @task.title
         tr
           td.column_name = t('views.form.label.status')
           td.column_content = @task.status
+        tr
+          td.column_name = t('views.form.label.c_name')
+          td.column_content 
+            - @task.categories.each do |category|
+              = category.name + ' '
 
     = link_to t('views.form.link.back_index', temp: 'タスク'), tasks_path, class: 'btn btn-primary btn-back'
 

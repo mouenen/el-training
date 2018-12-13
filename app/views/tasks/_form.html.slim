@@ -1,4 +1,3 @@
-
 - if @task.errors.any?
   .errer_explanation
     .alert.alert-danger
@@ -23,3 +22,8 @@ br
     = f.text_field :finished_at, class: 'form-control'
     .input-group-addon
       .glyphicon.glyphicon-calendar
+- Category.all.each do |category|
+  = check_box_tag "task[category_ids][]", category.id, f.object.categories.include?(category)
+  = category.name + ' '
+br
+br
