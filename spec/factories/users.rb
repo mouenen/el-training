@@ -4,5 +4,6 @@ FactoryBot.define do
     email { "#{name}@example.com".downcase }
     sequence(:password) { |n| "#{n}#{n}#{n}#{n}#{n}#{n}" }
     password_confirmation { password }
+    activated { true }
   end
 end
