@@ -12,9 +12,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'name should not be too long' do
-    user = FactoryBot.build(:user, name: 'a' * 21)
-    user.valid?
-    expect(user.errors[:name]).to be_truthy
+    expect(FactoryBot.build(:user, name: 'a' * 21)).to_not be_valid
   end
 
   it 'is invalid without an email address' do
@@ -31,18 +29,14 @@ RSpec.describe User, type: :model do
   end
 
   it 'email should not too long' do
-    user = FactoryBot.build(:user, email: 'a' * 255 + '@example')
-    user.valid?
-    expect(user.errors[:email]).to be_truthy
+    expect(FactoryBot.build(:user, email: 'a' * 255 + '@example')).to_not be_valid
   end
 
   it 'email validation should accept valid addresses' do
-    valid_addresses = %w[user@examplecom USER@foo.COM A_US-ER@foo.bar.org
+    valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
-      user = FactoryBot.build(:user, email: valid_address)
-      user.valid?
-      expect(user.errors[:email]).to be_truthy
+      expect(FactoryBot.build(:user, email: valid_address)).to be_valid
     end
   end
 
@@ -50,9 +44,7 @@ RSpec.describe User, type: :model do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                            foo@bar_baz.com foo@bar+baz.com]
     invalid_addresses.each do |invalid_address|
-      user = FactoryBot.build(:user, email: invalid_address)
-      user.valid?
-      expect(user.errors[:email]).to be_truthy
+      expect(FactoryBot.build(:user, email: invalid_address)).to_not be_valid
     end
   end
 
@@ -63,9 +55,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'password should have a minimum length' do
-    user = FactoryBot.build(:user, password: 'a' * 5)
-    user.valid?
-    expect(user.errors[:password]).to be_truthy
+    expect(FactoryBot.build(:user, password: 'a' * 5)).to_not be_valid
   end
 
   it 'authenticated? should return false for a user with nil digest' do
@@ -75,14 +65,28 @@ RSpec.describe User, type: :model do
   end
 
   it 'associated tasks should be destroyed' do
-    user = FactoryBot.create(:user)
+    user = FactoryBot.build(:user)
     user.valid?
-    task1 = user.tasks.create!(title: 'Test task1', content: 'My first test task.',
-                               priority: 1, finished_at: '2018-12-12 15:00:00')
-    task2 = user.tasks.create!(title: 'Test task2', content: 'My second test task.',
-                               priority: 2, finished_at: '2018-12-12 15:00:00')
+    task1 = user.tasks.build(title: 'Test task1', content: 'My first test task.',
+                             priority: 1, finished_at: Time.zone.now + 1.hour)
+    task2 = user.tasks.build(title: 'Test task2', content: 'My second test task.',
+                             priority: 2, finished_at: Time.zone.now + 1.hour)
+    puts "This task1's user is #{task1.user.inspect}"
+    puts "This task2's user is #{task2.user.inspect}"
     expect(user.tasks).to eq([task1, task2])
     user.destroy
-    expect(user.tasks.count).to eq 0
+    expect(task1).to be_nil
+    expect(task2).to be_nil
+  end
+
+  it 'sends an activate email on account activation' do
+    user = FactoryBot.create(:user)
+    allow(UserMailer).to receive_message_chain(:account_activation, :deliver_now)
+    expect(UserMailer).to have_received(:account_activation).with(user)
+  end
+
+  it 'sends a reset password email on reseting password' do
+    user = FactoryBot.create(:user)
+    expect(UserMailer.password_reset(user)).to have_received(:deliver_now)
   end
 end
