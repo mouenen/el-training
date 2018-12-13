@@ -1,0 +1,15 @@
+- if @category.errors.any?
+  .errer_explanation
+    .alert.alert-danger
+      | The form contains
+      = pluralize(@category.errors.count, "error")
+  ul
+    - @category.errors.full_messages.each do |msg|
+      li = msg
+
+= f.label :name, t('views.form.label.c_name')
+= f.text_field :name, class: 'form-control'
+br
+= f.label :desc, t('views.form.label.c_desc')
+= f.text_area :desc, class: 'form-control'
+br

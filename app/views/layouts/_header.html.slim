@@ -9,6 +9,7 @@ header.navbar.navbar-fixed-top.navbar-inverse
       ul.nav.navbar-nav.navbar-right
         - if logged_in?
           li = link_to t('views.default.index', temp: 'タスク'), tasks_path
+          li = link_to t('views.default.index', temp: 'ラベル'), categories_path
           li = link_to t('views.default.index', temp: 'ユーザ'), users_path
           li.dropdown
             a.dropdown-toggle herf='#' data-toggle='dropdown'

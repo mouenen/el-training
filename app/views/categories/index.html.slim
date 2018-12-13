@@ -1,0 +1,20 @@
+- content_for :title, t('views.default.index', temp: 'ラベル')
+h1.center = t('views.default.index', temp: 'ラベル')
+.row
+  .col-md-8.col-md-offset-2
+    table.table.table-hover.table-responsive
+      thead
+        tr
+          th = t('views.form.label.c_name')
+          th = t('views.form.label.c_desc')
+          th colspan="3"
+      tbody
+        - @categories.each do |category|
+          tr
+            td = category.name
+            td = category.desc
+            td = link_to t('views.form.link.show'), category
+            td = link_to t('views.form.link.edit'),  edit_category_path(category)
+            td = link_to t('views.form.link.destroy'), category, method: :delete, data: { confirm: t('views.form.link.sure?') }
+
+    = link_to t('views.default.new', temp: 'ラベル'), new_category_path, class: 'btn btn-primary'

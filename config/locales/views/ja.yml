@@ -41,6 +41,8 @@ ja:
         finished_time: 完成時間
         status: 状態
         status_placeholder: ステータス
+        c_name: ラベル
+        c_desc: 说明
       submit:
         login: ログイン
         update_password: パスワード更新
