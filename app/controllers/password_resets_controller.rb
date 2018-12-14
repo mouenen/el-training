@@ -3,8 +3,7 @@ class PasswordResetsController < ApplicationController
   before_action :valid_user, only: %i[edit uodate]
   before_action :check_expiration, only: %i[edit update]
 
-  def new
-  end
+  def new; end
 
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
@@ -19,8 +18,7 @@ class PasswordResetsController < ApplicationController
     end
   end
 
-  def edit    
-  end
+  def edit; end
 
   def update
     if params[:user][:password].empty?
@@ -33,7 +31,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     end
   end
- 
+
   private
 
   def user_params
@@ -45,9 +43,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def valid_user
-    unless (@user && @user.activated? && @user.authenticated?(:reset, params[:id]))
-      redirect_to login_path
-    end
+    redirect_to login_path unless @user&.activated? && @user&.authenticated?(:reset, params[:id])
   end
 
   def check_expiration

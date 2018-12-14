@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe UserMailer, type: :mailer do
-
   describe 'account_activation' do
     let(:user) { FactoryBot.create(:user) }
     let(:mail) { UserMailer.account_activation(user) }

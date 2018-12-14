@@ -2,8 +2,8 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :category_tasks, dependent: :destroy
   has_many :categories, through: :category_tasks
-  PRIORITY = { '高' => 1, '中' => 2, '低' => 3 }
-  STATUS = { '未着手' => 0, '着手中' => 1, '完了' => 2}
+  PRIORITY = { '高' => 1, '中' => 2, '低' => 3 }.freeze
+  STATUS = { '未着手' => 0, '着手中' => 1, '完了' => 2 }.freeze
   validates :user_id, presence: true
   validates :priority, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 3 }
   validates :status, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 2 }

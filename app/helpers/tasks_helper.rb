@@ -1,5 +1,4 @@
 module TasksHelper
-
   def sort_link_helper(text, param)
     key = param
     key += '_reverse' if params[:sort] == param
